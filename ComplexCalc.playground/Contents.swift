@@ -117,13 +117,18 @@ class Calculator {
         return add(args) / args.count
     }
     
-    
+    // apply custom operator to 2 numbers
     func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
-        return 0
+        return op(lhs, rhs)
     }
     
+    // apply custom operator to numbers in array
     func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
-        return 0
+        var ans = beg
+        for val in args {
+            ans = op(ans, val)
+        }
+        return ans
     }
     
     

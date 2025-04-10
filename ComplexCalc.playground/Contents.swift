@@ -59,33 +59,64 @@ class Calculator {
         return result
     }
     
+    // subtract two numbers
     func subtract(lhs: Int, rhs: Int) -> Int {
-        return 0
+        return lhs - rhs;
     }
     
+    // subtract cartesian points
+    func subtract(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (lhs.0 - rhs.0, lhs.1 - rhs.1)
+    }
+    
+    // subtract cartesian points as dictionaries
+    func subtract(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        var result: [String: Int] = [:]
+        for key in lhs.keys {
+            if let lVal = lhs[key], let rVal = rhs[key] {
+                result[key] = lVal - rVal
+            }
+        }
+        return result
+    }
+    
+    // multiply 2 numbers
     func multiply(lhs: Int, rhs: Int) -> Int {
-        return 0
+        return lhs * rhs
     }
     
-    func divide(lhs: Int, rhs: Int) -> Int {
-        return 0
-    }
-    
-    // MARK: - Extended Arithmetic (Arrays)
-    
+    // product of array
     func multiply(_ args: [Int]) -> Int {
-        return 0
+        var ans = 1
+        for number in args {
+            ans *= number
+        }
+        return ans
     }
     
+    // divide two numbers
+    func divide(lhs: Int, rhs: Int) -> Int {
+        if rhs != 0 {
+            return lhs / rhs
+        }
+        else {
+            return 0
+        }
+    }
+    
+    // count number of numbers in array
     func count(_ args: [Int]) -> Int {
-        return 0
+        return args.count
     }
     
+    // average value of array
     func avg(_ args: [Int]) -> Int {
-        return 0
+        if args.isEmpty {
+            return 0
+        }
+        return add(args) / args.count
     }
     
-    // MARK: - Higher-Order Functions
     
     func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
         return 0
@@ -93,18 +124,6 @@ class Calculator {
     
     func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
         return 0
-    }
-    
-    // MARK: - Cartesian Tuples
-    
-    func subtract(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
-        return (0, 0)
-    }
-    
-    // MARK: - Cartesian Dictionaries
-    
-    func subtract(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
-        return [:]
     }
     
     

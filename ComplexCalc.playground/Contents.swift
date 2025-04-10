@@ -28,6 +28,86 @@ print("Welcome back to the UW Calculator")
 //: IMPORTANT: If any tests are commented out, you will be graded a zero (0)! You should never be in the habit of eliminating tests to make the code pass.
 //:
 class Calculator {
+    
+    // add two numbers
+    func add(lhs: Int, rhs: Int) -> Int {
+        return lhs + rhs
+    }
+    
+    // add array of numbers
+    func add(_ args: [Int]) -> Int {
+        var sum = 0
+        for num in args {
+            sum += num
+        }
+        return sum
+    }
+    
+    // add cartesian points
+    func add(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (lhs.0 + rhs.0, lhs.1 + rhs.1)
+    }
+    
+    // add cartesian points as dictionaries
+    func add(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        var result: [String: Int] = [:]
+        for key in lhs.keys {
+            if let lVal = lhs[key], let rVal = rhs[key] {
+                result[key] = lVal + rVal
+            }
+        }
+        return result
+    }
+    
+    func subtract(lhs: Int, rhs: Int) -> Int {
+        return 0
+    }
+    
+    func multiply(lhs: Int, rhs: Int) -> Int {
+        return 0
+    }
+    
+    func divide(lhs: Int, rhs: Int) -> Int {
+        return 0
+    }
+    
+    // MARK: - Extended Arithmetic (Arrays)
+    
+    func multiply(_ args: [Int]) -> Int {
+        return 0
+    }
+    
+    func count(_ args: [Int]) -> Int {
+        return 0
+    }
+    
+    func avg(_ args: [Int]) -> Int {
+        return 0
+    }
+    
+    // MARK: - Higher-Order Functions
+    
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
+        return 0
+    }
+    
+    func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
+        return 0
+    }
+    
+    // MARK: - Cartesian Tuples
+    
+    func subtract(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (0, 0)
+    }
+    
+    // MARK: - Cartesian Dictionaries
+    
+    func subtract(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        return [:]
+    }
+    
+    
 }
 
 //: Don't change the name of this object (`calc`); it's used in all the tests.
@@ -52,7 +132,7 @@ calc.subtract(lhs: 2, rhs: 2) == 0
 calc.multiply(lhs: 2, rhs: 2) == 4
 calc.divide(lhs: 2, rhs: 2) == 1
 
-calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rjs) + (lhs * rhs) }) == 35
+calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rhs) + (lhs * rhs) }) == 35
     // This style is one way of writing an anonymous function
 calc.mathOp(lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20
     // This is the second, more terse, style; either works
